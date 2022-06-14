@@ -29,8 +29,11 @@ public class Principal {
 
         Scanner teclado = new Scanner(System.in);
 
-        Projeto[] vetorDeProjetos = new Projeto[10];
-        int countProjetos = 0;
+        //int[] vetor = new int[5];
+
+        Projeto[] vetorDeProjetos = new Projeto[5];
+
+        int contadorProjeto = 0;
 
         int opcao = 0;
         do {
@@ -43,20 +46,28 @@ public class Principal {
 
             switch (opcao){
                 case 1:
-                    System.out.println("Digite o codigo do Projeto: ");
-                    int codigo = teclado.nextInt();
-                    System.out.println("Digite o nome do Projeto: ");
-                    String nome = teclado.next();
-                    vetorDeProjetos[countProjetos] = new Projeto(codigo,nome,null);
-                    countProjetos++;
+                    if(contadorProjeto < 5){
+                        System.out.println("Digite o codigo do Projeto: ");
+                        int codigo = teclado.nextInt();
+                        System.out.println("Digite o nome do Projeto: ");
+                        String nome = teclado.next();
+                        Projeto p = new Projeto(codigo, nome, null);
+                        vetorDeProjetos[contadorProjeto] = p;
+                        //vetorDeProjetos[contadorProjeto] = new Projeto(codigo,nome,null);
+                        contadorProjeto++;
+                    }else{
+                        System.out.println("Vetor de projetos está cheio!");
+                    }
+
                     break;
                 case 2:
-                    //for
+                    for (Projeto obj: vetorDeProjetos) {
+                        if(obj != null){
+                            System.out.println(obj);
+                        }
+                    }
                     break;
             }
-
-
-
         } while (opcao != 0);
     }
 }

@@ -23,7 +23,7 @@ public class TesteVetor {
         vetorDeInteiros[4] = 5;*/
 
         System.out.println("Digite valores inteiros para o vetor");
-        for (int i = 0; i < vetorDeInteiros.length; i++) {
+        for (int i = 0; i < vetorDeInteiros.length; i++) { // i = i+1
             System.out.printf("\nvetor[%d] = ", i+1);
             vetorDeInteiros[i] = teclado.nextInt();
         }
