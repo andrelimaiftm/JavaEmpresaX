@@ -40,17 +40,22 @@ public class Principal {
             System.out.println("Menu");
             System.out.println("1 - Cadastrar Projetos");
             System.out.println("2 - Imprimir Todos os Projetos");
+            System.out.println("3 - Buscar Projeto por Id");
+            System.out.println("4 - Buscar Projeto por Nome");
             System.out.println("0 - Sair");
             System.out.println("Digite uma opcao: ");
             opcao = teclado.nextInt();
+
+            boolean temProjeto;
 
             switch (opcao){
                 case 1:
                     if(contadorProjeto < 5){
                         System.out.println("Digite o codigo do Projeto: ");
                         int codigo = teclado.nextInt();
+                        teclado.nextLine();
                         System.out.println("Digite o nome do Projeto: ");
-                        String nome = teclado.next();
+                        String nome = teclado.nextLine();
                         Projeto p = new Projeto(codigo, nome, null);
                         vetorDeProjetos[contadorProjeto] = p;
                         //vetorDeProjetos[contadorProjeto] = new Projeto(codigo,nome,null);
@@ -65,6 +70,35 @@ public class Principal {
                         if(obj != null){
                             System.out.println(obj);
                         }
+                    }
+                    break;
+                case 3:
+                    System.out.println("Digite o codigo do projeto ");
+                    temProjeto = false;
+                    int codigoProj = teclado.nextInt();
+                    for ( Projeto obj : vetorDeProjetos ) {
+                        if(obj != null && obj.getCodigo() == codigoProj){
+                            System.out.println(obj);
+                            temProjeto = true;
+                        }
+                    }
+                    if(temProjeto == false){
+                        System.out.println("Não existe projeto para esse codigo");
+                    }
+                    break;
+                case 4:
+                    teclado.nextLine();
+                    System.out.println("Digite o titulo do Projeto");
+                    String tituloProjeto = teclado.nextLine();
+                    temProjeto = false;
+                    for ( Projeto obj : vetorDeProjetos ) {
+                        if(obj != null && obj.getTitulo().equals(tituloProjeto)){
+                            System.out.println(obj);
+                            temProjeto = true;
+                        }
+                    }
+                    if(temProjeto == false){
+                        System.out.println("Não existe projeto para esse titulo");
                     }
                     break;
             }
